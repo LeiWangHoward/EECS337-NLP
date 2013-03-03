@@ -1,6 +1,11 @@
 EECS337-NLP
 
-Golden Globe "Analyzer"
+Recipe Modifier
+
+Requirement: 
+
+- Make the computer "understand" roles (e.g is it a protein?) of each ingredients of the recipe.
+- Change ingredients automatically based on style (health? vegeterian? spicy?)
 
 Team Member:
 
