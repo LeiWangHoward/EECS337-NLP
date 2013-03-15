@@ -3,7 +3,6 @@
 manipulating them. """
 
 import re
-from random import randint
 from sys import stdout
 #class ingredient:
 #    def __init__(self):
@@ -34,6 +33,3 @@ class Recipe(object):
         for num in range(len(self.directions)):
             print 'Step{0:2d}: {1}'.format(num+1, self.directions[num])
         print
-def pickRandom(objects):
-    """ Pick a random item from a list. Will be used for change ingredients maybe"""
-    return objects[randint(0, len(objects) - 1)]

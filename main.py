@@ -2,22 +2,13 @@
 """ Main entry point for the project. """
 
 from random import shuffle
-from sys import stdin, stdout
-
-import nltk
-
 from scrape import scrapeRecipe, scrapeSearch, selectRecipe
-
-
-def trim(text):
-    return text.lstrip(' \t\n').rstrip(' \t\n')
 
 def main():
     try:
         print "Welcome to creative recipe v1.0"
         while (True):
-            print "Enter a search query(q/Q to quit): "
-            query = trim(stdin.readline())
+            query = raw_input("Enter a search query(q/Q to quit): ")
             if query == 'q' or query == 'Q':
                 print "Bye! Have fun!"
                 break
@@ -35,8 +26,7 @@ def main():
                 print "Done! "
 
     except KeyboardInterrupt:
-        stdout.write("\n")
-
+        print
 
 if __name__ == '__main__':
     main()

@@ -30,7 +30,7 @@ def scrapeRecipe(title):
     recipe = Recipe()
 
     # Get title
-    recipe.title = details.find(id='itemTitle').text
+    recipe.title = title.replace("-"," ")#details.find(id='itemTitle').text
 
     # Get ingredients and amounts, save them to seperate array.
     initIngredients(recipe, details.find(id='zoneIngredients'))
