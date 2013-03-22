@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 """ Contains functions for scraping allrecipes.com. 
-    ver 1.1 March 14 Fixed time parse issue, now deal with hours"""
+    ver 1.1 March 14 Fixed time parse issue, now deal with hours
+    ver 1.2 March 21 Fixed 'no amount' issue, e.g. cooking spray"""
 import re
 from urllib2 import urlopen
 from bs4 import BeautifulSoup
@@ -85,8 +86,21 @@ def calculateTime(text):
 
 def initIngredients(recipe,div):
     """ Parse a list of ingredient strings and init ingredients and amount in recipe class """
-    recipe.ingredients=[ingredient.text for ingredient in div.find_all(id='lblIngName')]
-    recipe.ingredients_amount=[ingredient.text for ingredient in div.find_all(id='lblIngAmount')]
+    temp = []
+    temp = div.find_all("p", class_="fl-ing")
+    print temp #test use
+    #recipe.ingredients=[ingredient.find(id='lblIngName').text for ingredient in temp] #the website has problem, not always have ingredients
+    for ingredient in temp:
+        if ingredient.find(id='lblIngName'):
+            recipe.ingredients.append(ingredient.find(id='lblIngName').text)
+        else:
+            recipe.ingredients.append('')
+
+    for ingredient in temp:
+        if ingredient.find(id='lblIngAmount'):
+            recipe.ingredients_amount.append(ingredient.find(id='lblIngAmount').text)
+        else:
+            recipe.ingredients_amount.append('')
 
 def initDirections(div):
     """ Parse a list of directions as strings and return them"""
